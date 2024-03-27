@@ -55,7 +55,7 @@
     },
     "windows": [
       {
-        "label": "test",
+        "label": "test2",
         "fullscreen": false,
         "height": 800,
         "resizable": true,

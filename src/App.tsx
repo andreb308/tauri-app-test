@@ -42,12 +42,12 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center m-0 h-dvh w-dvw text-center bg-[#0f0e17]">
-      <div className=" z-[-100] absolute top-0 bottom-0 size-full border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start">
-        <EvervaultCard text={""} />
+    <div className="flex z-[-1] flex-col items-center justify-center m-0 h-dvh w-dvw text-center bg-[#0f0e17]">
+      <div className=" z-0 absolute top-0 bottom-0 size-full border border-black/[0.2] dark:border-white/[0.2] bg-transparent flex flex-col items-start">
+        <EvervaultCard className={"z-[-2]"} text={""} />
       </div>
-      <div className="z-1 max-w-full flex items-center justify-center flex-col">
-        <h1 className="font-raleway font-bold text-6xl m-0 text-white mb-12 font-">
+      <div className="z-2 max-w-full flex items-center justify-center flex-col">
+        <h1 className="font-raleway font-bold text-6xl m-0 z-10 text-white mb-12 select-none pointer-events-none">
           Título
         </h1>{" "}
         <Carousel
@@ -55,24 +55,20 @@ function App() {
             duration: 20,
             loop: true,
           }}
-          className="w-full max-w-[80%]"
+          className="w-full max-w-[80%]  pointer-events-none"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2  md:-ml-4">
             {data &&
               data.map((pet, index) => (
                 <CarouselItem className=" max-w-3xl " key={index}>
                   <div className=" p-0 size-full">
                     <Card>
-                      <CardContent className="h-[65dvh] flex items-center justify-center bg-[#16161a]">
-                        <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start w-full relative h-full">
-                          <EvervaultCard
-                            text={
-                              <img
-                                className="w-[80%] h-[75dvh] object-contain rounded-lg"
-                                src={pet.url}
-                                alt=""
-                              />
-                            }
+                      <CardContent className="h-[600px] flex items-center justify-center bg-[#16161a59]">
+                        <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-center justify-center w-full relative h-full">
+                          <img
+                            className="w-[500px] h-[500px] object-contain rounded-lg"
+                            src={pet.url}
+                            alt=""
                           />
                         </div>
                       </CardContent>
@@ -81,20 +77,21 @@ function App() {
                 </CarouselItem>
               ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className=" pointer-events-auto" />
+          <CarouselNext className=" pointer-events-auto" />
         </Carousel>
-        <div className="flex items-center justify-between w-[25%] flex-row mt-10">
+        <div className="z-20 flex items-center justify-between w-[25%] flex-row mt-10 pointer-events-none">
           <Button
-            className="w-48 bg-[#7f5af0]"
+            variant={"ghost"}
+            className="w-48 bg-[#7f5af0] pointer-events-auto text-white hover:text:black"
             onClick={() => fetchPuppies("dog")}
           >
             Fetch New Dogs
           </Button>
 
           <Button
-            variant={"destructive"}
-            className="w-48 bg-[#7f5af0]"
+            variant={"ghost"}
+            className="w-48 bg-[#7f5af0] pointer-events-auto text-white hover:text:black"
             onClick={() => fetchPuppies("cat")}
           >
             Fetch New Cats

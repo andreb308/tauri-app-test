@@ -17,7 +17,7 @@ export const EvervaultCard = ({
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    let str = generateRandomString(15000);
+    let str = generateRandomString(20000);
     setRandomString(str);
   }, []);
 
@@ -26,7 +26,7 @@ export const EvervaultCard = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
 
-    const str = generateRandomString(20000);
+    const str = generateRandomString(30000);
     setRandomString(str);
   }
 
@@ -46,7 +46,7 @@ export const EvervaultCard = ({
           mouseY={mouseY}
           randomString={randomString}
         />
-        <div className="relative z-10 flex items-center justify-center">
+        <div className="relative z-0 flex items-center justify-center">
           <div className="relative size-full rounded-full flex items-center justify-center text-white font-bold text-4xl">
             {text}
             {/* <div className="absolute w-full h-full bg-white/[0.8] dark:bg-black/[0.8] blur-sm rounded-full" /> */}
@@ -65,7 +65,7 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
     <div className="pointer-events-none">
       <div className="absolute inset-0  [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-700 opacity-0  group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
+        className="absolute inset-0 bg-gradient-to-r from-red-900 via-pink-900 to-purple-900 opacity-0  group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
         style={style}
       />
       <motion.div
