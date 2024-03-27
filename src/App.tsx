@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import { EvervaultCard } from "./components/ui/evervault-card";
 type PetAPIResponse = {
   id: string;
   url: string;
@@ -41,48 +42,64 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center m-0 h-dvh w-dvw text-center bg-gray-600">
-      <h1 className="text-6xl m-0 text-white">Test</h1>{" "}
-      <Carousel
-        opts={{
-          duration: 20,
-          // loop: true,
-        }}
-        className="w-full max-w-[80%]"
-      >
-        <CarouselContent className="-ml-2 md:-ml-4">
-          {data &&
-            data.map((pet, index) => (
-              <CarouselItem className=" max-w-3xl pl-2 md:pl-4 " key={index}>
-                <div className="p-1">
-                  <Card>
-                    <CardContent className="flex items-center justify-center p-6 bg-gray-500">
-                      <img
-                        style={{
-                          width: 500,
-                          height: 500,
-                          objectFit: "contain",
-                        }}
-                        src={pet.url}
-                        alt=""
-                      />
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-      <div className="flex items-center justify-between w-[25%] flex-row mt-10">
-        <Button className="w-48" onClick={() => fetchPuppies("dog")}>
-          Fetch New Dogs
-        </Button>
+    <div className="flex flex-col items-center justify-center m-0 h-dvh w-dvw text-center bg-[#0f0e17]">
+      <div className=" z-[-100] absolute top-0 bottom-0 size-full border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start">
+        <EvervaultCard text={""} />
+      </div>
+      <div className="z-1 max-w-full flex items-center justify-center flex-col">
+        <h1 className="font-raleway font-bold text-6xl m-0 text-white mb-12 font-">
+          Título
+        </h1>{" "}
+        <Carousel
+          opts={{
+            duration: 20,
+            loop: true,
+          }}
+          className="w-full max-w-[80%]"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {data &&
+              data.map((pet, index) => (
+                <CarouselItem className=" max-w-3xl " key={index}>
+                  <div className=" p-0 size-full">
+                    <Card>
+                      <CardContent className="h-[65dvh] flex items-center justify-center bg-[#16161a]">
+                        <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start w-full relative h-full">
+                          <EvervaultCard
+                            text={
+                              <img
+                                className="w-[80%] h-[75dvh] object-contain rounded-lg"
+                                src={pet.url}
+                                alt=""
+                              />
+                            }
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+        <div className="flex items-center justify-between w-[25%] flex-row mt-10">
+          <Button
+            className="w-48 bg-[#7f5af0]"
+            onClick={() => fetchPuppies("dog")}
+          >
+            Fetch New Dogs
+          </Button>
 
-        <Button className="w-48" onClick={() => fetchPuppies("cat")}>
-          Fetch New Cats
-        </Button>
+          <Button
+            variant={"destructive"}
+            className="w-48 bg-[#7f5af0]"
+            onClick={() => fetchPuppies("cat")}
+          >
+            Fetch New Cats
+          </Button>
+        </div>
       </div>
     </div>
   );
