@@ -57,13 +57,13 @@ function App() {
           }}
           className="w-full max-w-[80%]  pointer-events-none"
         >
-          <CarouselContent className="-ml-2  md:-ml-4">
+          <CarouselContent className="-ml-2 min-h-[600px]  md:-ml-4">
             {data &&
               data.map((pet, index) => (
                 <CarouselItem className=" max-w-3xl " key={index}>
                   <div className=" p-0 size-full">
                     <Card>
-                      <CardContent className="h-[600px] flex items-center justify-center bg-[#16161a59]">
+                      <CardContent className="min-h-[600px] flex items-center justify-center bg-[#16161a59]">
                         <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-center justify-center w-full relative h-full">
                           <img
                             className="w-[500px] h-[500px] object-contain rounded-lg"

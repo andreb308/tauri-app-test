@@ -14,6 +14,14 @@ export const EvervaultCard = ({
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
+  // const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   setCount(count + 1); // infinite loop
+  //   let str = generateRandomString(20000);
+  //   setRandomString(str);
+  // }, [count]);
+
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
@@ -58,18 +66,18 @@ export const EvervaultCard = ({
 };
 
 export function CardPattern({ mouseX, mouseY, randomString }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  let maskImage = useMotionTemplate`radial-gradient(5000px, white, transparent)`;
   let style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">
-      <div className="absolute inset-0  [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-red-900 via-pink-900 to-purple-900 opacity-0  group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
+      <div className="absolute inset-0  [mask-image:linear-gradient(white,transparent)] opacity-100"></div>
+      {/* <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-blue-600 via-yellow-400 to-pink-500 opacity-100 backdrop-blur-xl transition duration-500"
         style={style}
-      />
+      /> */}
       <motion.div
-        className="absolute inset-0 opacity-0 mix-blend-overlay  group-hover/card:opacity-100"
+        className="absolute inset-0 mix-blend-overlay opacity-5"
         style={style}
       >
         <p className="absolute inset-x-0 text-xs h-full break-words whitespace-pre-wrap text-white font-mono font-bold transition duration-500">
